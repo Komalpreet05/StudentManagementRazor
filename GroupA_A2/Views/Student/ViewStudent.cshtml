@@ -1,0 +1,85 @@
+﻿@model GroupA_A2.Models.Student
+
+@{
+    ViewBag.Title = "ViewStudent";
+}
+<style>
+    thead.thead-dark {
+        background: #fbfee3;
+    }
+</style>
+<div class="container body-content">
+    <h2 id="head1">Student Details</h2>
+
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8 set">
+            <div class="row">
+                <div class="col-md-3">
+                    <p><strong class="para1">Full Name: </strong></p>
+                </div>
+                <div class="col-md-9 set2">
+                    <p class="para">@Model.FirstName @Model.LastName</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <p><strong class="para1">Program Name: </strong></p>
+                </div>
+                <div class="col-md-9 set2">
+                    <p class="para">@Model.allPrograms.ProgramName</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+        </div>
+    </div>
+
+    <h2 id="head3">Courses </h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Course ID
+                </th>
+                <th>
+                    Course Name
+                </th>
+                <th>
+                    Course Code
+                </th>
+                <th>
+                    Description
+                </th>
+
+
+            </tr>
+        </thead>
+        @foreach (var item in Model.allPrograms.Courses)
+
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CourseCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Desc)
+                </td>
+
+
+            </tr>
+        }
+    </table>
+    </div>

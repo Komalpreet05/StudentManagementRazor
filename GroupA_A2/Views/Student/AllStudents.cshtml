@@ -1,0 +1,110 @@
+﻿@model List<GroupA_A2.Models.Student>
+
+@{
+    ViewBag.Title = "allStudents";
+}
+
+<style>
+    .card.card-komal {
+        padding: 33.5px;
+        background: #e8c56478;
+        width: 100%;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: #5a2ec1;
+        border-color: #5a2ec1;
+    }
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: brown;
+        border-color: brown;
+    }
+    .card-body.card-body-komal {
+        padding: 20px;
+        width: 285px;
+        background: #e8c56478;
+        padding-top: 0;
+    }
+
+    p.card-text {
+        padding: 5px;
+    }
+
+    .col-md-4.col-md-4-komal {
+        margin-bottom: 22px;
+    }
+
+    .card-title-komal {
+        color: #1b2263;
+        padding: 0px !important;
+        font-size: xx-large;
+        margin: 0px !important;
+    }
+
+    h4#head2 {
+        text-align: center;
+        font-size: 35px;
+        padding-bottom: 30px;
+        margin-top: 0;
+    }
+
+    button#btn a {
+        text-decoration: none;
+        color: white;
+        font-size: 22px;
+    }
+
+    img.card-img-top {
+        padding: 20px;
+        background: #e8c56478;
+    }
+
+    .btn-info {
+        color: #fff;
+        background-color: #1da81b;
+        border-color: #1da81b;
+    }
+
+        .btn-info:hover {
+            color: #fff;
+            background-color: springgreen;
+            border-color: springgreen;
+        }
+</style>
+<div class="container body-content">
+    <h2 id="head1">All Students</h2>
+    <h4 id="head2"><button type="button" class="btn btn-info" id="btn">@Html.ActionLink("Table View", "AllStudentsTable", "Student")</button></h4>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-md-4-komal">
+                <div class="card">
+                    <img class="card-img-top" src="~/Images/@Html.DisplayFor(x => item.Image)" height="300" width="285">
+                    <div class="card-body card-body-komal">
+                        <h4 class="card-title card-title-komal">@Html.DisplayFor(x => item.FirstName) @Html.DisplayFor(x => item.LastName)</h4>
+                        <p class="card-text">
+                            <strong>Student ID: </strong>@Html.DisplayFor(x => item.StudentID)<br />
+                            <strong>Program: </strong>@Html.DisplayFor(x => item.allPrograms.ProgramName) <br />
+                            <strong>Address: </strong><span class="glyphicon glyphicon-home">&nbsp;</span>@Html.DisplayFor(x => item.Address) <br />
+                            <strong>City: </strong><span class="glyphicon glyphicon-map-marker">&nbsp;</span>@Html.DisplayFor(x => item.City) <br />
+                            <strong>Postal Code: </strong>@Html.DisplayFor(x => item.PostalCode)<br />
+                            <strong>Province: </strong>@Html.DisplayFor(x => item.Province)<br />
+                            <strong>Phone Number: </strong><span class="glyphicon glyphicon-phone-alt">&nbsp;</span><a href="tel:+44-20-8123-4567">@Html.DisplayFor(x => item.PhoneNumber)</a><br />
+                            <strong>E-mail: </strong><span class="glyphicon glyphicon-envelope">&nbsp;</span>@Html.DisplayFor(x => item.EmailAddress)
+
+                        </p>
+
+
+                        @Html.ActionLink("Edit", "EditStudent", new { id = item.StudentID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("View", "ViewStudent", new { id = item.StudentID }, new { @class = "btn btn-primary" })
+
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    </div>
+
